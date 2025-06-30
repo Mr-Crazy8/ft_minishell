@@ -6,7 +6,7 @@
 /*   By: anel-men <anel-men@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 11:32:18 by anel-men          #+#    #+#             */
-/*   Updated: 2025/06/25 19:07:24 by anel-men         ###   ########.fr       */
+/*   Updated: 2025/06/30 18:06:42 by anel-men         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	*open_file(t_cmd *cmd, int type, char *file, int Ambiguous)
 	if (type == 3)
 	{
 		fd = heredoc_opener();
+		printf("[%d]   [%d]\n", fd[0], fd[1]);
 		return (fd);
 	}
 	else if (Ambiguous == 1)

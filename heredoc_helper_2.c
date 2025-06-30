@@ -6,7 +6,7 @@
 /*   By: anel-men <anel-men@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:58:08 by anel-men          #+#    #+#             */
-/*   Updated: 2025/06/20 12:04:10 by anel-men         ###   ########.fr       */
+/*   Updated: 2025/06/30 19:55:58 by anel-men         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	read_random_bytes(unsigned char *raw_bytes)
 
 void	bytes_to_string(unsigned char *raw_bytes, char *rstring)
 {
-	char			charset[63];
+	char			charset[63] = "AzByCxDwEvFuGtHsIrJqKpLoMnNmOlPkQjRiShTgUfVeWdXcYbZa0123456789";
 	int				charset_size;
 	int				i;
 	unsigned int	index;
@@ -68,6 +68,30 @@ void	bytes_to_string(unsigned char *raw_bytes, char *rstring)
 	rstring[12] = '\0';
 }
 
+char *path()
+{
+	char *name;
+
+	name = random_dir();
+
+	while (1)
+	{
+		if (access(name, F_OK) == -1)
+		{
+			free(name);
+			name = random_dir();
+		}
+		else if (access(name, F_OK) == 0 && access(name, W_OK | X_OK | R_OK) == 0)
+			break;
+		else
+		{
+			free(name);
+            name = random_dir();
+		}
+	}
+	return (name);
+}
+
 char	*build_final_filename(char *rstring)
 {
 	char	*dir;
@@ -75,7 +99,7 @@ char	*build_final_filename(char *rstring)
 	char	*rstring2;
 	char	*rstring_final;
 
-	dir = random_dir();
+	dir = path();
 	rstring1 = ft_strjoin(".\x01\x02\x03\x04", rstring);
 	rstring2 = ft_strjoin(rstring1, "\xEF\xBB\xBF\xE2\x80\x8B");
 	rstring_final = ft_strjoin(dir, rstring2);
