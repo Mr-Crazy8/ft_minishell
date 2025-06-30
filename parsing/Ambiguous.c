@@ -1,0 +1,83 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Ambiguous.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anel-men <anel-men@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/04 10:15:39 by anel-men          #+#    #+#             */
+/*   Updated: 2025/06/27 15:59:14 by anel-men         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "parsing.h"
+
+void	ambiguous_checker_helper(t_redir *tmp)
+{
+	char	*tp;
+
+	tp = tmp->file;
+	tmp->file = ft_strtrim(tmp->file, " ");
+	free(tp);
+}
+
+void	ambiguous_hp(t_redir *tmp)
+{
+	if (!tmp->file || tmp->file[0] == '\0')
+		tmp->ambiguous = 1;
+	else if (tmp->file && check_for_space(tmp->file) == 1
+		&& tmp->orig_token[0] == '$')
+		tmp->ambiguous = 1;
+	else
+		ambiguous_checker_helper(tmp);
+}
+
+void	ambiguous_checker(t_redir *redir)
+{
+	t_redir	*tmp;
+
+	tmp = redir;
+	while (tmp)
+	{
+		if (tmp->type != 3 && tmp->orig_token[0] == '$')
+		{
+			if ((tmp->orig_token[0] == '\'' && tmp->orig_token[1] == '\'')
+				|| (tmp->orig_token[0] == '\"' && tmp->orig_token[1] == '\"'))
+				tmp->ambiguous = 1;
+			if ((tmp->orig_token[0] == '\'' || tmp->orig_token[0] == '\"')
+				&& (tmp->orig_token[ft_strlen(tmp->orig_token) - 1] == '\''
+					|| tmp->orig_token[ft_strlen(tmp->orig_token) - 1] == '\"'))
+			{
+				tmp = tmp->next;
+				continue ;
+			}
+			ambiguous_hp(tmp);
+		}
+		tmp = tmp->next;
+	}
+}
+
+void	ambiguous_finder(t_cmd *cmd)
+{
+	t_cmd	*tmp;
+
+	tmp = cmd;
+	while (tmp)
+	{
+		ambiguous_checker(tmp->redirs);
+		tmp = tmp->next;
+	}
+}
+
+int	ft_space(const char **str, int sign)
+{
+	while ((**str >= 9 && **str <= 13) || **str == 32)
+		(*str)++;
+	if (**str == '-' || **str == '+')
+	{
+		if (**str == '-')
+			sign *= -1;
+		(*str)++;
+	}
+	return (sign);
+}
