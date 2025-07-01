@@ -6,7 +6,7 @@
 /*   By: anel-men <anel-men@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:55:34 by anel-men          #+#    #+#             */
-/*   Updated: 2025/06/30 19:56:36 by anel-men         ###   ########.fr       */
+/*   Updated: 2025/07/01 10:34:22 by anel-men         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,16 +104,18 @@ char *file_name()
 	{
 		if (access(name, F_OK) == 0)
 		{
+			printf("i did find [%s]\n", name);
 			free(name);
 			name = random_file_name();
 		}
 		else if (access(name, F_OK) == -1)
+		{
+			printf("i did not find [%s]\n", name);
 			break;
+		}
 	}
 	return (name);
 }
-
-
 
 int	*heredoc_opener(void)
 {
