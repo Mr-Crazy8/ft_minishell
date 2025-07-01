@@ -6,7 +6,7 @@
 /*   By: anel-men <anel-men@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 15:06:28 by anel-men          #+#    #+#             */
-/*   Updated: 2025/07/01 16:16:53 by anel-men         ###   ########.fr       */
+/*   Updated: 2025/07/01 16:50:04 by anel-men         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,22 @@ int	process_string_initial(char *str, t_exp_helper *expand,
 	if (expand->expanded)
 		expand->expanded[expand->j] = '\0';
 	expand->expanded = change_space(expand->expanded);
-	printf("process_string_initial [%s]\n", expand->expanded);
 	return (1);
+}
+int check_if_there_only_qoutes(char *str)
+{
+	int i = 0;
+	int count = 0;
+	int lent = ft_strlen(str);
+	while (str && str[i])
+	{
+		if (str[i] == '\'' || str[i] == '\"')
+			count++;
+		i++;	
+	}
+	if (lent == count)
+		return 1;
+	return 0;
 }
 
 void	process_string_finalize(t_exp_helper *expand)
@@ -93,13 +107,13 @@ void	process_string_finalize(t_exp_helper *expand)
 		return ;
 	}
 	change_space(new_expanded);
-	remove_empty_quotes_inplace(new_expanded);
+	if (check_if_there_only_qoutes(expand->expanded) == 0)
+		remove_empty_quotes_inplace(new_expanded);
 	free(original_expanded);
 	change_space(new_expanded);
 	final_result = ft_strtrim(new_expanded, " ");
 	free(new_expanded);
 	expand->expanded = final_result;
-	printf("process_string_finalize [%s]\n", expand->expanded);
 }
 
 void	process_string(char *str, t_exp_helper *expand,
