@@ -6,7 +6,7 @@
 /*   By: anel-men <anel-men@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 15:06:28 by anel-men          #+#    #+#             */
-/*   Updated: 2025/06/28 15:00:36 by anel-men         ###   ########.fr       */
+/*   Updated: 2025/07/01 16:16:53 by anel-men         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	process_string_initial(char *str, t_exp_helper *expand,
 	if (expand->expanded)
 		expand->expanded[expand->j] = '\0';
 	expand->expanded = change_space(expand->expanded);
+	printf("process_string_initial [%s]\n", expand->expanded);
 	return (1);
 }
 
@@ -98,6 +99,7 @@ void	process_string_finalize(t_exp_helper *expand)
 	final_result = ft_strtrim(new_expanded, " ");
 	free(new_expanded);
 	expand->expanded = final_result;
+	printf("process_string_finalize [%s]\n", expand->expanded);
 }
 
 void	process_string(char *str, t_exp_helper *expand,

@@ -6,7 +6,7 @@
 /*   By: anel-men <anel-men@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 14:20:59 by anel-men          #+#    #+#             */
-/*   Updated: 2025/06/28 15:08:41 by anel-men         ###   ########.fr       */
+/*   Updated: 2025/07/01 16:23:16 by anel-men         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	handle_empty_var(t_cmd *current, t_exp_helper *expand, int *i, int *j)
 		free(expand->expanded);
 		expand->expanded = NULL;
 		shift_arrays_left(current, i, j);
+		printf("handle_empty_var[%s]\n", current->args[(*i)]);
 		return (1);
 	}
 	return (0);
@@ -97,6 +98,7 @@ void	expand_handle(t_cmd *cmd_list, t_env *env, int exit_status)
 		{
 			process_string(current->args[i], expand, env, number);
 			expander_0(current, expand, &i, &j);
+			printf("final :  [%s]\n", current->args[i]);
 		}
 		update_cmd(current);
 		expand_handle_redir(current->redirs, expand, env, number);
