@@ -6,7 +6,7 @@
 /*   By: anel-men <anel-men@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:55:34 by anel-men          #+#    #+#             */
-/*   Updated: 2025/07/01 10:34:22 by anel-men         ###   ########.fr       */
+/*   Updated: 2025/07/02 12:36:43 by anel-men         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,36 +94,12 @@ int	was_delimiter_quoted(char *orig_token)
 	return (0);
 }
 
-char *file_name()
-{
-	char *name;
-
-	name = random_file_name();;
-
-	while (1)
-	{
-		if (access(name, F_OK) == 0)
-		{
-			printf("i did find [%s]\n", name);
-			free(name);
-			name = random_file_name();
-		}
-		else if (access(name, F_OK) == -1)
-		{
-			printf("i did not find [%s]\n", name);
-			break;
-		}
-	}
-	return (name);
-}
-
 int	*heredoc_opener(void)
 {
 	char	*random_name;
 	int		*fd_heredoc;
 
 	random_name = file_name();
-
 	fd_heredoc = malloc(2 * sizeof(int));
 	if (!fd_heredoc)
 		return (free(random_name), NULL);

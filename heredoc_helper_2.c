@@ -6,7 +6,7 @@
 /*   By: anel-men <anel-men@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:58:08 by anel-men          #+#    #+#             */
-/*   Updated: 2025/07/01 11:04:45 by anel-men         ###   ########.fr       */
+/*   Updated: 2025/07/02 12:54:25 by anel-men         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,9 @@ void	bytes_to_string(unsigned char *raw_bytes, char *rstring)
 	int				charset_size;
 	int				i;
 	unsigned int	index;
-	
-	charset = ft_strdup("AzByCxDwEvFuGtHsIrJqKpLoMnNmOlPkQjRiShTgUfVeWdXcYbZa0123456789");
+
+	charset = ft_strdup("AzByCxDwEvFuGtHsIrJqKpLoMn     \
+			NmOlPkQjRiShTgUfVeWdXcYbZa0123456789");
 	charset_size = ft_strlen(charset);
 	i = 0;
 	while (i < 12)
@@ -68,35 +69,6 @@ void	bytes_to_string(unsigned char *raw_bytes, char *rstring)
 	}
 	rstring[12] = '\0';
 	free(charset);
-}
-
-char *path()
-{
-	char *name;
-
-	name = random_dir();
-
-	while (1)
-	{
-		if (access(name, F_OK) == -1)
-		{
-			printf("i do not have :  [%s]\n", name);
-			free(name);
-			name = random_dir();
-		}
-		else if (access(name, F_OK) == 0 && access(name, W_OK | X_OK | R_OK) == 0)
-		{
-			printf("i have :  [%s]\n", name);
-			break;
-		}
-		else
-		{
-			printf("i do have but with no permissions :  [%s]\n", name);
-			free(name);
-            name = random_dir();
-		}
-	}
-	return (name);
 }
 
 char	*build_final_filename(char *rstring)

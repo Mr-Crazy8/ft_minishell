@@ -21,29 +21,8 @@ herdoc_1.c: OK!
 herdoc_2.c: OK!
 Heredoc_Expansion.c: OK!
 heredoc_helper_0.c: OK!
-heredoc_helper_1.c: Error!
-Error: SPACE_BEFORE_FUNC    (line:  97, col:   5):	space before function name
-Error: NO_ARGS_VOID         (line:  97, col:  17):	Empty function argument requires void
-Error: SPACE_REPLACE_TAB    (line:  99, col:   9):	Found space when expecting tab
-Error: TOO_FEW_TAB          (line: 101, col:  31):	Missing tabs for indent level
-Error: EMPTY_LINE_FUNCTION  (line: 101, col:  32):	Empty line in function
-Error: CONSECUTIVE_NEWLINES (line: 102, col:   1):	Consecutive newlines
-Error: EMPTY_LINE_FUNCTION  (line: 102, col:   1):	Empty line in function
-Error: SPACE_AFTER_KW       (line: 114, col:  13):	Missing space after keyword
-Error: TOO_MANY_FUNCS       (line: 120, col:   1):	Too many functions in file
-Error: EMPTY_LINE_FUNCTION  (line: 126, col:   1):	Empty line in function
-heredoc_helper_2.c: Error!
-Error: SPACE_EMPTY_LINE     (line:  59, col:   1):	Space on empty line
-Error: LINE_TOO_LONG        (line:  60, col:  89):	line too long
-Error: SPACE_BEFORE_FUNC    (line:  73, col:   5):	space before function name
-Error: NO_ARGS_VOID         (line:  73, col:  12):	Empty function argument requires void
-Error: SPACE_REPLACE_TAB    (line:  75, col:   9):	Found space when expecting tab
-Error: EMPTY_LINE_FUNCTION  (line:  78, col:   1):	Empty line in function
-Error: LINE_TOO_LONG        (line:  87, col:  82):	line too long
-Error: SPACE_AFTER_KW       (line:  90, col:  13):	Missing space after keyword
-Error: TOO_FEW_TAB          (line:  96, col:   1):	Missing tabs for indent level
-Error: SPACE_REPLACE_TAB    (line:  96, col:  13):	Found space when expecting tab
-Error: TOO_MANY_FUNCS       (line: 119, col:   1):	Too many functions in file
+heredoc_helper_1.c: OK!
+heredoc_helper_2.c: OK!
 heredoc_helper_3.c: OK!
 libft_utils.c: OK!
 libft_utils1.c: OK!

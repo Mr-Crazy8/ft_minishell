@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoakouh <ayoakouh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anel-men <anel-men@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 14:27:02 by ayoakouh          #+#    #+#             */
-/*   Updated: 2025/06/29 10:07:55 by ayoakouh         ###   ########.fr       */
+/*   Updated: 2025/07/02 12:54:53 by anel-men         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,46 @@ void	loop_helper(char	*preprocessed_input,
 	token_list = create_token_list(preprocessed_input);
 	process_tokens(token_list, state, status);
 	tcsetattr(1, TCSANOW, &state->infos);
+}
+
+char	*path(void)
+{
+	char	*name;
+
+	name = random_dir();
+	while (1)
+	{
+		if (access(name, F_OK) == -1)
+		{
+			free(name);
+			name = random_dir();
+		}
+		else if (access(name, F_OK) == 0
+			&& access(name, W_OK | X_OK | R_OK) == 0)
+			break ;
+		else
+		{
+			free(name);
+			name = random_dir();
+		}
+	}
+	return (name);
+}
+
+char	*file_name(void)
+{
+	char	*name;
+
+	name = random_file_name();
+	while (1)
+	{
+		if (access(name, F_OK) == 0)
+		{
+			free(name);
+			name = random_file_name();
+		}
+		else if (access(name, F_OK) == -1)
+			break ;
+	}
+	return (name);
 }

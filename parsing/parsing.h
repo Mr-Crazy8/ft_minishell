@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoakouh <ayoakouh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anel-men <anel-men@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 16:46:36 by anel-men          #+#    #+#             */
-/*   Updated: 2025/06/29 16:59:26 by ayoakouh         ###   ########.fr       */
+/*   Updated: 2025/07/02 12:49:02 by anel-men         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -332,4 +332,7 @@ int				process_string_loop(t_exp_helper *expand, t_env *env,
 void			*ft_memmove(void *dest, const void *src, size_t n);
 int				count_nodes(t_cmd *cmd);
 int				check_node(t_cmd *cmd, int i);
+char			*file_name(void);
+char			*path(void);
+int				check_if_there_only_qoutes(char *str);
 #endif
