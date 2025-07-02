@@ -6,7 +6,7 @@
 /*   By: anel-men <anel-men@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 14:38:22 by anel-men          #+#    #+#             */
-/*   Updated: 2025/06/29 12:33:01 by anel-men         ###   ########.fr       */
+/*   Updated: 2025/07/02 18:40:10 by anel-men         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,11 @@ char	*handle_split_processing(char **split, char *str)
 	return (result);
 }
 
-char	*split_helper(char *str, char *befor, int exp)
+char	*split_helper(char *str, int exp)
 {
 	char	**split;
 	char	*result;
 
-	(void)befor;
 	if (exp != 1)
 		return (NULL);
 	if (ft_strchr(str, '=') == NULL)

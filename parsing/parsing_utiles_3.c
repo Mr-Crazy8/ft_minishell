@@ -6,7 +6,7 @@
 /*   By: anel-men <anel-men@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 14:33:32 by anel-men          #+#    #+#             */
-/*   Updated: 2025/06/28 11:21:31 by anel-men         ###   ########.fr       */
+/*   Updated: 2025/07/02 18:40:49 by anel-men         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ void	split_stoper_hp(t_cmd *tmp, int *i, int *exp)
 		*exp = 1;
 	if (tmp->args_befor_quotes_remover && tmp->args_befor_quotes_remover[(*i)])
 	{
-		new_str = split_helper(tmp->args[(*i)],
-				tmp->args_befor_quotes_remover[(*i)], *exp);
+		new_str = split_helper(tmp->args[(*i)], *exp);
 		if (new_str != NULL)
 		{
 			free(tmp->args[(*i)]);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   herdoc_1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoakouh <ayoakouh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anel-men <anel-men@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 14:40:57 by anel-men          #+#    #+#             */
-/*   Updated: 2025/06/29 10:03:10 by ayoakouh         ###   ########.fr       */
+/*   Updated: 2025/07/02 18:39:57 by anel-men         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,8 @@ int	max_heredoc_checker(t_cmd *cmd)
 	return (0);
 }
 
-void	heredoc_sigint_handler(int sig)
+void	heredoc_sigint_handler(void)
 {
-	(void)sig;
 	exit(130);
 }
 

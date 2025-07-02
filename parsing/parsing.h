@@ -6,7 +6,7 @@
 /*   By: anel-men <anel-men@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 16:46:36 by anel-men          #+#    #+#             */
-/*   Updated: 2025/07/02 12:49:02 by anel-men         ###   ########.fr       */
+/*   Updated: 2025/07/02 18:40:33 by anel-men         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -311,7 +311,7 @@ char			*create_simple_assignment(char *key, char *value,
 					char **split, char *new_key);
 char			*process_valid_assignment(char **split, char *new_key);
 char			*handle_split_processing(char **split, char *str);
-char			*split_helper(char *str, char *befor, int exp);
+char			*split_helper(char *str, int exp);
 t_env			*find_shlvl_node(t_env *env);
 void			update_shlvl_value(t_env *shlvl_node);
 t_env			*create_shlvl_node(void);

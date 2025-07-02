@@ -6,7 +6,7 @@
 /*   By: anel-men <anel-men@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 14:47:45 by anel-men          #+#    #+#             */
-/*   Updated: 2025/06/28 20:35:12 by anel-men         ###   ########.fr       */
+/*   Updated: 2025/07/02 18:46:37 by anel-men         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static char	*add(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
-	s1_len = strlen(s1);
-	s2_len = strlen(s2);
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
 	s3 = (char *)malloc((s1_len + s2_len + 1) * sizeof(char));
 	if (s3 == NULL)
 		return (NULL);
